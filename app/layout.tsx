@@ -1,26 +1,21 @@
 import { FetchConfig } from 'http-react'
 import './globals.css'
-import 'bs-icon/icons.css'
-import Link from 'next/link'
-import Icon from 'bs-icon'
+
+import Sidebar from 'components/general/Sidebar'
 
 function MainLayout({ children }) {
   return (
     <FetchConfig baseUrl='/api'>
       <html data-theme='light'>
         <head>
-          <title>Next.js starter</title>
-          <meta name='description' content='A Starter with Next.js' />
+          <title>ScoutSherpa | Guided tours</title>
+          <meta name='description' content='ScoutSherpa helps you make guided tours easily and efficiently, so you worry less about your users getting lost while they navigate your website' />
         </head>
         <body>
-          <div className='p-8'>{children}</div>
-          <Link
-            href='https://github.com/danybeltran/nextjs-typescript-and-mongodb'
-            target='_blank'
-            className='fixed bottom-2 left-2 btn btn-sm gap-x-2'
-          >
-            <Icon name='github' /> <span>Github</span>
-          </Link>
+          <div className='flex'>
+            <Sidebar />
+            <div className='p-8 bg-red-300 w-full'>{children}</div>
+          </div>
         </body>
       </html>
     </FetchConfig>
