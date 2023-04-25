@@ -1,9 +1,11 @@
 function Website() {
     return (
-        <div>
-            <p>
-                This is a good place to start
-            </p>
+        <div className="text-black">
+            <div>
+                <div className="flex flex-col">
+                    <h2 className="text-6xl font-bold">Tours</h2>
+                </div>
+            </div>
         </div>
     )
 }

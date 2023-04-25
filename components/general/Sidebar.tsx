@@ -7,7 +7,7 @@ const Sidebar = () => {
             <div id="sideBar_Content" className="drawer-toggle"></div>
             <div className="drawer-side">
                 <label htmlFor="sideBar_Content" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 bg-[#040F16] text-white flex flex-col justify-between">
+                <ul className="menu p-4 w-80 bg-[#040F16] flex flex-col justify-between text-gray-300">
                     {/* Sidebar content */}
                     <div className="flex mt-5">
                         <div className="mr-2">
@@ -17,7 +17,7 @@ const Sidebar = () => {
                             <p className="text-xl">
                                 John Doe
                             </p>
-                            <p className="text-xs text-gray-300">
+                            <p className="text-xs">
                                 john.doe@mail.com
                             </p>
                         </div>
