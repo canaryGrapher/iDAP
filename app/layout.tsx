@@ -1,16 +1,27 @@
 import React from 'react'
-import './globals.css'
+import type { Metadata } from 'next'
+import { Mulish } from 'next/font/google'
+import { ReduxProvider } from '@/app/utilities/store/provider'
+import '@/app/utilities/styles/globals.css'
+import '@/app/utilities/styles/layout.scss'
 
-import Sidebar from 'components/general/Sidebar'
+// @ts-ignore
+const mulish = Mulish({ subsets: ['latin'] })
 
-function MainLayout({ children }) {
-  return (
-
-    <div className='flex'>
-      <Sidebar />
-      <div className='p-8 w-full bg-white'>{children}</div>
-    </div>
-  )
+export const metadata: Metadata = {
+  title: 'iDAP | Admin',
+  description: 'Admin portal for iDAP',
 }
 
-export default MainLayout
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+  return (
+    <html lang="en">
+      <body className={mulish.className}>
+        <ReduxProvider>
+          <div>{children}</div>
+        </ReduxProvider>
+      </body>
+    </html>
+  )
+}

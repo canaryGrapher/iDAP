@@ -1,34 +1,36 @@
-### Next.js with TypeScript, MongoDB, HttpReact, TailwindCSS and DaisyUI
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-A Next.js app with a serverless backend using MongoDB. A template that can be used to quickly bootstrap new Next.js project. It also has Tailwind configured with Postcss and DaisyUI
+## Getting Started
 
-Clone/(Download as zip) this repo, then:
+First, run the development server:
 
-`npm install`
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-or
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-`yarn install`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-When starting the dev server, pass an env. variable with the URI for the MongoDB connection.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-`MONGO_URI="my-mongodb-uri" npm run dev`
+## Learn More
 
-You can also place that variable inside a `.ENV` file (don't forget to add it to your `.gitignore` file)
+To learn more about Next.js, take a look at the following resources:
 
-Since serverless doesn't save variables after an api call, you need to create the connection inside each request if it's not created yet, you can do this by calling the function `connectToDatabase` that is inside utils.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-And you are ready to go:)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-(It has an example using Typescript with Mongoose models in the api handlers).
+## Deploy on Vercel
 
----
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-I created three of the libraries used in this project:
-
-[`http-react`](https://http-react.netlify.app/): React hooks for Data fetching
-[`react-kuh`](https://www.npmjs.com/package/react-kuh): TypeScript-ready React (kinda) useful hooks
-[`next-api-validation`](https://www.npmjs.com/package/next-api-validation): Validate HTTP requests inside Next.js API endpoints
-
-
-[Live preview](https://nextjs-typescript-and-mongodb-psi.vercel.app)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

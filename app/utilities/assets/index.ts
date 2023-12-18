@@ -1,0 +1,16 @@
+import Activate_img from "./Activate.svg"
+import Delete_img from "./Delete.svg"
+import Edit_img from "./Edit.svg"
+import Export_img from "./Export.svg"
+import Journeys_img from "./Journeys.svg"
+import Login_img from "./Login.svg"
+import Logo_Black_img from "./Logo_Black.svg"
+import Logo_White_img from "./Logo_White.svg"
+import Logout_img from "./Logout.svg"
+import Manage_img from "./Manage.svg"
+import Overlays_img from "./Overlays.svg"
+import Reset_img from "./Reset.png"
+import Close_img from "./Close.svg"
+import Add_img from "./Add.svg"
+
+export { Activate_img, Delete_img, Edit_img, Export_img, Journeys_img, Login_img, Logo_Black_img, Logo_White_img, Logout_img, Manage_img, Overlays_img, Reset_img, Close_img, Add_img }

@@ -1,0 +1,36 @@
+#loggedInSidebar {
+  background-color: #ef7c00;
+  height: 100%;
+  width: 100%;
+  color: #000000;
+}
+
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .sidebarOptionsContainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.2rem;
+    .sidebarOption {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      // margin: 30px 5px;
+      padding: 15px 10px;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+    .selected {
+      background-color: rgb(255, 255, 255);
+    }
+  }
+}
+
+// #dashboardSidebar {
+
+// }
