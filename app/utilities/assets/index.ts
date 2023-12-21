@@ -12,5 +12,7 @@ import Overlays_img from "./Overlays.svg"
 import Reset_img from "./Reset.png"
 import Close_img from "./Close.svg"
 import Add_img from "./Add.svg"
+import Profile_img from "./Profile.png"
+import Dropdown_img from "./Dropdown.svg"
 
-export { Activate_img, Delete_img, Edit_img, Export_img, Journeys_img, Login_img, Logo_Black_img, Logo_White_img, Logout_img, Manage_img, Overlays_img, Reset_img, Close_img, Add_img }
+export { Activate_img, Delete_img, Edit_img, Export_img, Journeys_img, Login_img, Logo_Black_img, Logo_White_img, Logout_img, Manage_img, Overlays_img, Reset_img, Close_img, Add_img, Profile_img, Dropdown_img }

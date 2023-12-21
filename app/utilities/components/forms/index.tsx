@@ -4,10 +4,13 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import { Form, Input, Checkbox, Select, Switch, FloatButton, message } from 'antd';
 import { Delete_img, Edit_img, Close_img } from "@/app/utilities/assets"
+import { ButtonOptions, PositionOptions, TopLinksOptions, defaultStepOptions } from "./options"
+import Links from "./topNavs"
 import "./styles.scss"
 
 const FormComponent: React.FC<{ mode: string }> = (props) => {
     const [formDefault] = Form.useForm();
+    const [formTopNav] = Form.useForm();
     const [formStep] = Form.useForm();
     const [journeySteps, setJourneySteps] = useState<any>([])
     const [messageApi, contextHolder] = message.useMessage();
@@ -37,9 +40,13 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
     }
 
     const removeStep = (index: number) => {
-        const updatedSteps = journeySteps.splice(index, 1)
+        let updatedSteps;
+        if (journeySteps.length > index) {
+            updatedSteps = journeySteps.splice(index, 1)
+        } else {
+            updatedSteps = []
+        }
         setJourneySteps(updatedSteps)
-        console.log(journeySteps)
     }
     const router = useRouter()
     return (
@@ -60,6 +67,7 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
                         layout="vertical"
                         onFinish={journeyFormSubmission}
                     >
+                        {/* For default configurations for the journey */}
                         <h2>{props.mode.toLocaleUpperCase()} Configuration</h2>
                         <div className="form_fields_default">
                             <div className="left_section">
@@ -76,22 +84,36 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
                                 </Form.Item>
                                 <Form.Item label="Default step options" name="defaultTourOptions">
                                     <Checkbox.Group className="checkBox_Group" name="defaultTourOptions" />
-                                    <Checkbox value="arrows">
-                                        Arrows
-                                    </Checkbox>
-                                    <Checkbox value="cancelIcon">
-                                        Cancel Icon
-                                    </Checkbox>
-                                    <Checkbox value="smoothScroll">
-                                        Smooth scroll to target
-                                    </Checkbox>
-                                    <Checkbox value="modalOverlay" defaultChecked>
-                                        Modal Overlay
-                                    </Checkbox>
+                                    {defaultStepOptions.map((stepOptions, index) => {
+                                        if (!(props.mode === "journeys" && stepOptions.value === "modalOverlay")) {
+                                            return (
+                                                <Checkbox value={stepOptions.value} key={index}>
+                                                    {stepOptions.label}
+                                                </Checkbox>
+                                            )
+                                        }
+                                    })}
+
                                 </Form.Item>
                             </div>
                         </div>
                     </Form>
+                    {props.mode === "journeys" ? <Form form={formTopNav} layout='vertical'>
+                        <h2>Top Nav configuration</h2>
+                        <div className='form_fields_step'>
+                            <div className="left_section">
+                                <Form.Item label="Select top nav button" name="topNavButton">
+                                    <Select placeholder="" options={TopLinksOptions} allowClear />
+                                </Form.Item>
+                            </div>
+                            <div className="left_section">
+                                <Form.Item label="Select sub-link" name="subNavButton">
+                                    <Select placeholder="" options={TopLinksOptions} allowClear />
+                                </Form.Item>
+                            </div>
+                        </div>
+                    </Form> : null
+                    }
                     <Form
                         form={formStep}
                         layout="vertical"
@@ -107,24 +129,7 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
                                     <Input.TextArea placeholder="How would the next step be reached?" />
                                 </Form.Item>
                                 <Form.Item label="Buttons" name='buttonsToShow'>
-                                    <Checkbox.Group className="checkBox_Group" options={[
-                                        {
-                                            value: "next",
-                                            label: "Next"
-                                        },
-                                        {
-                                            value: "back",
-                                            label: "Back"
-                                        },
-                                        {
-                                            value: "cancel",
-                                            label: "Cancel"
-                                        },
-                                        {
-                                            value: "complete",
-                                            label: "Complete"
-                                        }
-                                    ]} />
+                                    <Checkbox.Group className="checkBox_Group" options={ButtonOptions} />
                                 </Form.Item>
                                 <Form.Item label="User can click Target" name="targetClick" valuePropName="checked">
                                     <Switch />
@@ -141,27 +146,8 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
                                 </Form.Item>
                                 <Form.Item label="Position" name="elementPosition">
                                     <Select
-                                        placeholder="The position for modal wrt the element"
-                                        options={[
-                                            {
-                                                value: "left",
-                                                label: "Left"
-                                            },
-
-                                            {
-                                                value: "right",
-                                                label: "Right"
-                                            },
-                                            {
-                                                value: "top",
-                                                label: "Top"
-                                            },
-
-                                            {
-                                                value: "bottom",
-                                                label: "Bottom"
-                                            }
-                                        ]}
+                                        placeholder="The position for modal wrt the element" allowClear
+                                        options={PositionOptions}
                                     />
                                 </Form.Item>
                             </div>
@@ -192,7 +178,7 @@ const FormComponent: React.FC<{ mode: string }> = (props) => {
                     </div>
                 </div>
                 <div className='stepsContainer'>
-                    <h2>Steps</h2>
+                    <h2>Steps {journeySteps.length}</h2>
                     {journeySteps.length > 0 ?
                         journeySteps.map((step: any, index: Key) => {
                             return (

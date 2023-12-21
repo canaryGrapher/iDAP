@@ -9,7 +9,7 @@ const SearchSectionJourneys: React.FC<{ mode: string }> = (props) => {
     const router = useRouter()
     return (
         <div className="searchContainer">
-            <Input type="search" placeholder="Search for a journey..." />
+            <Input type="search" placeholder={"Search for " + props.mode + "..."} />
 
             <div className="tourContainers">
                 <div className="actionZone">

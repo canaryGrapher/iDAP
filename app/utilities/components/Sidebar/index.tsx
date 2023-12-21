@@ -19,13 +19,6 @@ const SidebarProps = [
         }
     },
     {
-        name: "Manage",
-        icon: {
-            alt: "Manage icon",
-            src: Manage_img
-        }
-    },
-    {
         name: "Export",
         icon: {
             alt: "Export icon",

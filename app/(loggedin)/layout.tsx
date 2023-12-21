@@ -11,8 +11,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="content">
             <nav><Sidebar /></nav>
             <main>
-                <div><Topnav /></div>
-                <div>{children}</div>
+                <div id='topNav'><Topnav /></div>
+                <section id="sectionContent">{children}</section>
             </main>
         </div>
     )
